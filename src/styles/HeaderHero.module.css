@@ -1,0 +1,183 @@
+/* src/styles/HeaderHero.module.css */
+
+/* --- General Structure & Background --- */
+.header {
+    background-color: #dc2626; /* Red-600 */
+    position: relative;
+    padding-bottom: 50px; /* Space for the content above the curve */
+}
+
+/* Curve/Wave Effect: This requires an absolute element with complex geometry. */
+/* For simplicity, we'll use a pseudo-element with border-radius/clip-path for a basic curve. */
+/* Note: Achieving the exact smooth S-curve from the image is easier with SVG or a complex path. */
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px; /* Controls the height of the white area */
+    background-color: #fff;
+    /* A more complex, yet cleaner, curve: */
+    border-top-left-radius: 50% 100px;
+    border-top-right-radius: 50% 100px;
+    transform: translateY(50%); /* Move half the height into the red section */
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navLinks {
+    display: none; /* Hide by default for mobile */
+    gap: 1.5rem;
+}
+
+.signInButton {
+    background-color: white;
+    color: #dc2626;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 9999px; /* Full rounded */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signInButton:hover {
+    background-color: #f3f4f6;
+}
+
+/* --- Hero Content --- */
+.heroContent {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure it stays above the pseudo-element */
+    z-index: 10;
+}
+
+.textBlock {
+    text-align: center;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.heroTitle {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: #fca5a5; /* Red-300 */
+    display: block;
+}
+
+.heroSubtitle {
+    margin-top: 1rem;
+    font-size: 1.125rem;
+}
+
+.emailForm {
+    margin-top: 2rem;
+    display: flex;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.emailInput {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem 0 0 0.5rem;
+    color: #333;
+    outline: none;
+}
+
+.submitButton {
+    background-color: #b91c1c; /* Red-700 */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+    background-color: #991b1b; /* Red-800 */
+}
+
+/* --- Image Block --- */
+.imageBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.mobileMockup {
+    width: 16rem; /* 256px */
+    height: 24rem; /* 384px */
+    background-color: #1f2937; /* Gray-900 */
+    border: 8px solid #4b5563; /* Gray-700 */
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: white;
+}
+
+/* --- Media Queries (Desktop) --- */
+@media (min-width: 768px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .navLinks {
+        display: flex; /* Show on desktop */
+    }
+
+    .heroContent {
+        flex-direction: row;
+        text-align: left;
+        padding-top: 6rem;
+        padding-bottom: 8rem;
+    }
+
+    .textBlock {
+        text-align: left;
+        max-width: 50%;
+        margin-right: 2rem;
+        margin-bottom: 0;
+    }
+
+    .emailForm {
+        margin-left: 0;
+    }
+
+    .imageBlock {
+        max-width: 50%;
+        justify-content: flex-end;
+    }
+}
